@@ -1,0 +1,557 @@
+// CARGAR MATRIZ INT DE MANERA MANUAL
+public static void cargar_matriz_int(int [][] mat){
+		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+		try{
+			for (int fila = 0; fila < MAXFILA; fila++){
+				for (int columna = 0; columna < MAXCOLUMNA; columna++){
+					System.out.println("Ingrese un entero para la posicion ["+fila+"]["+columna+"]");
+					mat[fila][columna] = Integer.valueOf(entrada.readLine());
+				}
+			}
+		}
+		catch(Exception exc){
+			System.out.println(exc);
+		}
+	}	
+
+// CARGAR MATRIZ ALEATORIA INT
+public static void cargar_matriz_aleatorio_int(int [][] mat){
+		Random r = new Random();
+		for (int fila = 0; fila < MAXFILA; fila++){
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				mat[fila][columna]=(r.nextInt(MAXVALOR+MINVALOR-1) + MINVALOR);
+			}
+		}
+	}
+
+// CARGAR MATRIZ ALEATORIA CHAR
+public static void cargar_matriz_aleatorio_char(char [][] mat){
+		Random r = new Random();
+		for (int fila = 0; fila < MAXFILA; fila++){
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				mat[fila][columna]=(char)(r.nextInt(26) + 'a');
+			}
+		}
+	}
+
+// CARGAR MATRIZ ALEATORIO DOUBLE
+public static void cargar_matriz_aleatorio_double(double [][] mat){
+		Random r = new Random();
+		for (int fila = 0; fila < MAXFILA; fila++){
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				mat[fila][columna]=((MAXVALOR-MINVALOR-1)*r.nextDouble() + MINVALOR*1.0);  
+			}
+		}
+	} 
+
+// IMPRIMIR MATRIZ INT
+public static void imprimir_matriz_int(int[][] mat) {
+	System.out.println("-------------------");
+	for (int i = 0 ; i < MAXFILA; i++){
+		for (int j = 0 ; j < MAXCOLUMNA; j++)
+		System.out.print(" "+mat[i][j]);
+		System.out.println("");
+	}
+}
+
+// IMPRIMIR MATRIZ CHAR
+public static void imprimir_matriz_char(char [][] mat){
+		for (int fila = 0; fila < MAXFILA; fila++){
+			System.out.print("|");
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				System.out.print(mat[fila][columna]+"|");
+			}
+			System.out.println("");
+		}
+	}
+
+// IMPRIMIR MATRIZ DOUBLE
+public static void imprimir_matriz_double(double [][] mat){
+		for (int fila = 0; fila < MAXFILA; fila++){
+			System.out.print("|");
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				System.out.print(mat[fila][columna]+"|");
+			}
+			System.out.println("");
+		}
+	}
+
+// IMPRIMIR PROMEDIOS FILAS
+public static void imprimir_promedios_filas (int[][] mat){
+	for (int fila = 0 ; fila < MAXFILA; fila++){
+		System.out.println("Promedio de la fila "+fila+" es "+promedio_fila(mat,fila));
+	}
+}
+
+
+// IMPRIMIR PROMEDIOS COLUMNAS
+public static void imprimir_por_pantalla_promedios_matriz(int [][] mat){
+int promedio;
+	for (int columna = 0; columna < MAXCOLUMNA; columna++){
+		promedio = obtener_promedio_columna(mat,columna);
+		System.out.println("el promedio de la columna "+columna+" es "+promedio);
+	}
+}
+
+// SACAR PROMEDIO DE FILAS
+public static int promedio_fila (int[][] mat, int fila){
+	int promedio;
+	int suma = 0;
+	for (int columna = 0 ; columna < MAXCOLUMNA; columna++) {
+		suma+=mat[fila][columna];
+	}
+	promedio = suma/MAXCOLUMNA;
+	return promedio;
+	}
+}
+
+// SACAR PROMEDIO COLUMNAS
+public static int obtener_promedio_columna(int [][] mat, int columna){
+int promedio,suma;
+suma = 0;
+	for (int fila = 0; fila < MAXFILA; fila++){
+		suma+=mat[fila][columna];
+	}
+	promedio=suma/MAXFILA;
+	return promedio;
+}
+
+
+// INTERCAMBIAR ORDEN DE FILAS Y COLUMNAS DE UNA MATRIZ
+	public static void cambiar_orden(int[][] mat) {
+		int iniciofila = 0;
+		int iniciocol = 0;
+		int finfila = MAXFILA-1;
+		int fincol = MAXCOLUMNA-1;
+		for (int fila = 0; fila<=MAXFILA; fila++) {
+			while(iniciofila < finfila) {
+				intercambiarPosiciones (mat[fila], iniciofila, finfila);
+				iniciofila++;
+				finfila--;
+			}
+			for (int columna = 0; columna<=MAXCOLUMNA; columna++) {
+				while(iniciocol < fincol) {
+					intercambiarPosiciones (mat[columna], iniciocol, fincol);
+					iniciocol++;
+					fincol--;
+				}
+
+			}
+		}
+	}
+	
+
+	public static void intercambiarPosiciones(int [] mat, int p1, int p2) {
+		int aux = mat[p1];
+		mat[p1] = mat[p2];
+		mat[p2] = aux;
+	}
+
+
+// METODO PARA BUSCAR FILA Y COLUMNA EN DONDE SE ENCUENTRA UN ELEMENTO DENTRO DE UNA MATRIZ
+public static void imprimir_fila_columna_matriz(int[][] mat, int numero){
+int fila = 0;
+int columna = MAXCOLUMNA;
+	while ((fila < MAXFILA) && (columna == MAXCOLUMNA)){
+		columna = obtener_pos_arreglo(mat[fila],numero);
+		if (columna == MAXCOLUMNA){
+			fila++;
+		}
+	}
+	if ((fila < MAXFILA) && (columna < MAXCOLUMNA)){
+		System.out.println(numero+" se encuentra en "+fila+" y "+columna);
+	}
+	else {
+		System.out.println(numero+" no se encuentra en la matriz");
+	}
+}
+
+public static int obtener_pos_arreglo(int [] arr, int numero){
+int posicion = 0;
+	while ((posicion < MAXCOLUMNA) && (arr[posicion] != numero)){
+		posicion++;
+	}
+	return posicion;
+}
+
+
+// CORRIMIENTO DERECHA FILA Y COLUMNA
+public static void corrimiento_der_fila_columna(int [] arrenteros, int pos){
+int indice = MAXCOLUMNA-1;
+	while (indice > pos){
+	arrenteros[indice] = arrenteros[indice-1];
+	indice--;
+	}
+}
+
+// CORRIMIENTO IZQUIERDA FILA
+public static void corrimiento_izq_fila(char[][] mat, int fil, int pos){
+	for (int col=pos;col<N-1;col++){
+		mat[fil][col]=mat[fil][col+1];
+	}
+}
+
+// CORRIMIENTO IZQUIERDA COLUMNA
+    public static void corrimiento_izq(int[][]matint, int numeroFila, int numeroColumna) {
+        while (numeroColumna < MAXCOLUMNA-1) {
+            matint[numeroFila][numeroColumna] = matint[numeroFila][numeroColumna+1];
+            numeroColumna++;
+        }
+    }
+
+// CORRIMIENTO DERECHA COLUMNA
+	public static void corrimiento_der(int [][] mat, int fila, int columna){
+		int indice = MAXCOLUMNA-1;
+			while (indice > columna){
+			mat[fila][indice] = mat[fila][indice-1];
+			columna--;
+			}			
+		}
+
+// ELIMINAR SECUENCIAS CENTRALES
+public static void eliminar_secuencias_centrales(char[][] mat){
+int inicio = 0;
+int fin = -1;
+int cant = 0;
+	for (int fil = 0;fil < M;fil++){
+		cant = cantidad_secuencias_fila(mat,fil);
+		if (cant > 0){
+			inicio = obtener_inicio_secuencia(mat,fil,cant/2+1);
+			fin = obtener_fin_secuencia(mat,fil,inicio);
+			for(cant=fin-inicio+1;cant>0;cant--){
+				corrimiento_izq_fila(mat,fil,inicio);
+			}
+		}
+	}
+}
+
+// ORDENAR MATRIZ (COLUMNA) POR SELECCION
+public static void ordenar_matriz_columna_seleccion(int [][] mat, int columna) {
+int pos_menor, tmp;
+	for (int i = 0; i < MAXFILA; i++) {
+		pos_menor = i;
+		for (int j = i + 1; j < MAXFILA; j++){
+			if (mat[j][columna] < mat[pos_menor][columna]) {
+				pos_menor = j;
+			}
+		}
+		if (pos_menor != i){
+			tmp = mat[i][columna];
+			mat[i][columna] = mat[pos_menor][columna];
+			mat[pos_menor][columna] = tmp;
+		}
+	}
+}
+
+// MATRICES DE SECUENCIAS (public static final double probabilidad_letra = 0.4; public static final double probabilidad_numero = 0.4;)
+// IMPRIMIR MATRIZ CHAR
+public static void imprimir_matriz_char(char [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		imprimir_arreglo_secuencias_char(mat[fila]);
+		System.out.println("");
+	}
+}
+
+public static void imprimir_arreglo_secuencias_char(char [] arr){
+		System.out.print("|");
+		for (int pos = 0; pos < MAXCOLUMNA; pos++){
+			System.out.print(arr[pos]+"|");
+		}
+	}
+
+// IMPRIMIR MATRIZ INT
+public static void imprimir_matriz_int(int [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		imprimir_arreglo_secuencias_int(mat[fila]);
+		System.out.println("");
+	}
+}
+
+public static void imprimir_arreglo_secuencias_int(int [] arr){
+		System.out.print("|");
+		for (int pos = 0; pos < MAXCOLUMNA; pos++){
+			System.out.print(arr[pos]+"|");
+		}
+	}
+
+
+// CARGAR MATRIZ ALEATORIRA CON SECUENCIAS DE TIPO INT
+public static void cargar_matriz_aleatorio_secuencias_int(int [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		cargar_arreglo_aleatorio_secuencias_int(mat[fila]);
+	}
+	System.out.println("");
+}
+
+public static void cargar_arreglo_aleatorio_secuencias_int(int [] arr){
+		Random r = new Random();
+		arr[0] = 0;
+		arr[MAXCOLUMNA-1] = 0;
+		for (int pos = 1; pos < MAXCOLUMNA-1; pos++){
+			if (r.nextDouble()>probabilidad_numero){
+				arr[pos]=(r.nextInt(MAXVALOR+MINVALOR-1) + MINVALOR); 
+			}
+			else{
+				arr[pos]=0;				
+			}
+		}
+	}
+
+// CARGAR MATRIZ ALEATORIRA CON SECUENCIAS DE TIPO CHAR
+public static void cargar_matriz_aleatorio_secuencias_char(char [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		cargar_arreglo_aleatorio_secuencias_char(mat[fila]);
+	}
+	System.out.println("");
+}
+
+public static void cargar_arreglo_aleatorio_secuencias_char(char [] arr){
+		Random r = new Random();
+		arr[0] = ' ';
+		arr[MAXCOLUMNA-1] = ' ';
+		for (int pos = 1; pos < MAXCOLUMNA-1; pos++){
+			if (r.nextDouble()>probabilidad_letra){
+				arr[pos]=(char)(r.nextInt(26) + 'a');
+			}
+			else{
+				arr[pos]=' ';				
+			}
+		}
+	}
+
+// IMPRIMIR SUMA DE SECUENCIAS EN UNA MATRIZ
+public static void imprimir_suma_secuencias_matriz(int[][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		System.out.println("Para la fila "+fila);
+		imprimir_suma_cada_secuencia(mat[fila]);
+	}
+}
+
+// ELIMINAR TODAS LAS OCURRENCIAS DE UNA MATRIZ CON CORRIMIENTO A IZQUIERDA
+    public static void obtener_fila_columna_matriz(int[][]matint, int numero) {
+        int fila = 0;
+        int columna = MAXCOLUMNA;
+        while ((fila < MAXFILA) && (columna == MAXCOLUMNA)) {
+            columna = obtener_pos_arreglo(matint[fila], numero);
+            if (columna == MAXCOLUMNA) {
+                fila++;
+            }
+        }
+        if ((fila < MAXFILA) && (columna < MAXCOLUMNA)) {
+            corrimiento_izq(matint, fila, columna);
+        }
+        else {
+        }
+    }
+    
+    public static int obtener_pos_arreglo(int[]arr, int numero) { 
+        int posicion = 0;
+        while ((posicion < MAXCOLUMNA) && (arr[posicion] != numero)) { 
+            posicion++;
+        }
+        
+        return posicion;
+    }
+
+    public static void corrimiento_izq(int[][]matint, int numeroFila, int numeroColumna) {
+        while (numeroColumna < MAXCOLUMNA-1) {
+            matint[numeroFila][numeroColumna] = matint[numeroFila][numeroColumna+1];
+            numeroColumna++;
+        }
+    }
+
+// INSERTAR UN NUMERO EN UNA MATRIZ MANTENIENDO ORDEN (SIN USAR METODOS DE ORDENAMIENTO)
+    public static void insertar_numero_arreglo(int [] mat, int numero){
+        int pos=obtener_pos_arreglo(mat, numero);
+        if (pos<MAXCOLUMNA){
+            corrimiento_der_fila_columna(mat,pos);
+            mat[pos]=numero;
+        }
+    }
+     
+    public static int obtener_pos_arreglo(int[] arr, int numero){
+        int pos = 0;
+        while ((pos<MAXCOLUMNA)&&(arr[pos]<numero)){
+            pos++;
+        }
+        return pos;
+    }
+    
+    public static void corrimiento_der_fila_columna(int [] mat, int pos){
+    	int indice = MAXCOLUMNA-1;
+    		while (indice > pos){
+    		mat[indice] = mat[indice-1];
+    		indice--;
+    		}
+    	}
+
+// ORDENAR UNA MATRIZ ENTRE 2 COLUMNAS Y FILA INGRESADAS POR EL USUARIO
+
+(EN EL MAIN)
+for (int i = columna1; columna1<columna2; columna1++) {
+				ordenar_matriz_fila_seleccion(matriz, fila, columna1, columna2);
+			}
+
+(METODO)
+    public static void ordenar_matriz_fila_seleccion(int [][] mat, int fila, int columna1, int columna2) {
+    	int pos_menor, tmp;
+    	for (int i = 0; i < columna2; i++) {
+    		pos_menor = i;
+    		for (int j = i + 1; j < columna2; j++){
+    			if (mat[fila][j] < mat[fila][pos_menor]) {
+    				pos_menor = j;
+    			}
+    		}
+    		if (pos_menor != i){
+    			tmp = mat[fila][i];
+    			mat[fila][i] = mat[fila][pos_menor];
+    			mat[fila][pos_menor] = tmp;
+    		}
+    	}
+    }
+}
+
+// METODO PARA INSERTAR LA SUMA DE CADA SECUENCIA AL FINAL DE LA MISMA
+
+(EN EL MAIN)
+for (int fila = 0; fila<MAXFILA; fila++) {
+	insertar_suma_secuencia(matriz[fila]);
+}
+
+(METODO FUERA DEL MAIN)
+   public static void insertar_suma_secuencia(int[]arr) {
+    	int inicio = 0;
+    	int fin = 0;
+    	int suma = 0;
+    	while (inicio < MAXCOLUMNA) {
+	        inicio = obtener_inicio_secuencia(arr, fin+1);
+	        if (inicio < MAXCOLUMNA) {
+	        	fin = obtener_fin_secuencia(arr, inicio);
+	        	suma = obtener_suma_secuencia(arr, inicio, fin);
+	        	System.out.println(suma);
+	        	for(int i = fin; i<=fin+1; i++) {
+	        		arr[fin+1] = suma;
+	        	}
+	        }
+	        fin = fin+2;
+    	}
+    }
+
+
+// METODO PARA BUSCAR LA SECUENCIA CON MAYOR SUMA EN TODA LA MATRIZ
+(EN EL MAIN)
+imprimir_suma_cada_secuencia(matriz);
+
+(METODO)
+public static void imprimir_suma_cada_secuencia(int[][]mat) {
+		int mayorSumaFila, mayorSumaMatriz = 0;
+    	for (int fila = 0; fila < MAXFILA; fila++) {
+            mayorSumaFila = buscar_suma_mayor_secuencia(mat[fila]);
+            if(mayorSumaFila > mayorSumaMatriz) {
+            	mayorSumaMatriz = mayorSumaFila;
+            }
+        }
+    	System.out.println("El valor de la mayor suma entre las secuencias de la matriz es "+mayorSumaMatriz);
+    }
+	
+
+	public static int buscar_suma_mayor_secuencia(int [] mat){
+		int inicio,fin;
+		inicio = 0;
+		fin = -1;
+		int suma = 0;
+		while ((inicio < MAXCOLUMNA)){
+			inicio = obtener_inicio_secuencia(mat,fin+1);
+			if (inicio < MAXCOLUMNA){
+				fin = obtener_fin_secuencia(mat,inicio);
+				suma = obtener_suma(mat,inicio,fin); 		
+			}
+		}
+		return suma;	
+	}
+
+// METODO PARA INVERTIR ORDEN DE MATRIZ
+public static int [][] invertir_orden(int[][] matint){
+	for(int fila=0; fila>MAX_FILA; fila ++) {
+		int indice1= 0 ;
+		int indice2= MAX-1;
+		while(indice1<indice2) {
+			invertir_orden_arreglo(indice1, indice2,matint);
+			indice1 ++;
+			indice2 --;
+		}
+	}
+		return matint;
+		 	 }
+	 public static int[][] invertir_orden_arreglo(int indice1, int indice2, int[] [] matint){
+		 int[] enteroTemporal = matint[indice1];
+	        matint[indice1] = matint[indice2];
+	        matint[indice2] = enteroTemporal;
+		 return matint;
+	 }
+
+// METODO PARA ENCONTRAR NUMEROS PARES EN UNA MATRIZ
+cantidad_pares= encontrar_numeros_pares(matint , cantidad_pares);
+	System.out.println("la cantidad de numeros pares es: " + cantidad_pares);
+}
+		 
+		 
+		 
+public static int encontrar_numeros_pares(int[][]matint, int cantidad_pares){
+	for(int fila=0; fila <MAX_FILA; fila++) {
+		for(int columna=0; columna<MAX_COLUMNA; columna++) {
+			if(matint[fila][columna]%2==0) {
+				cantidad_pares ++; 
+			}
+		}
+	}			 
+	return cantidad_pares;
+}
+
+// METODO PARA AGREGAR EN UN ARREGLO EL PROMEDIO ENTERO DE LA SUMA DE SECUENCIAS PARES DE UNA MATRIZ
+       public static void recorrerArreglo(int matriz[][],int arrPatron[]){         
+            for( int fila= 0; fila<MAXFILA;fila++){
+                SecuenciaPar(matriz[fila],arrPatron);
+            }
+        }
+
+public static void SecuenciaPar(int arreglo[],int arrPatron[]){
+int inicio=0;
+int fin=-1;
+while(inicio<MAXCOLUMNA){
+inicio = inicioSecuencia(arreglo,fin+1);
+if(inicio<MAXCOLUMNA){
+fin = finSecuencia(arreglo,inicio);
+procesarSecuencia(arreglo,inicio,fin,arrPatron);
+}
+}
+}  
+
+public static void procesarSecuencia(int arreglo[], int inicio,int fin,int arrPatron[]){
+int tamanio= ((fin-inicio)+1);
+int suma=0;
+int promedio=0;
+if((tamanio % 2) == 0){
+for(int i=inicio ; i<=fin ;i++){
+suma = suma + arreglo[i]; 
+promedio=(suma/tamanio);
+System.out.println("promedio" + promedio);
+insertarPromedioArreglo(arrPatron,promedio);
+}
+ }
+ }
+
+public static void insertarPromedioArreglo(int arrPatron[],int promedio){
+            int i=0;
+            boolean insertado = false;
+          // for(int i=0; i<MAXCOLUMNA;i++){
+            while(i<MAXCOLUMNA && insertado==false) {      
+            if(arrPatron[i]==0){
+                insertado= true;
+                    arrPatron[i]=promedio; 
+            }
+            i++;   
+        }               
+    }
+        
+        

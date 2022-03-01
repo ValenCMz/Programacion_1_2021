@@ -1,0 +1,159 @@
+/******************************************************************************************** FUNCIONES ************************************************************************************/
+
+//_____________________________________________________// OBTENER LA PRIMERA POSICIÓN EN UN ARREGLO DE UN NÚMERO INGRESADO POR UN USUARIO //_____________________________________________________// 
+
+System.out.println("Ingrese un entero :");
+entero = Integer.valueOf(entrada.readLine());
+posicion_encontrada = obtener_pos_arreglo(matint[fila], entero); // 
+
+public static int obtener_pos_arreglo(int[] arr, int numero){
+    int pos = 0;
+    while ((pos<MAXCOLUMNA)&&(arr[pos]<numero)){
+        pos++;
+    }
+    return pos;
+}
+
+//_____________________________________________________// OBTENER LA PRIMERA POSICIÓN DE EN UN ARREGLO DE UN NÚMERO INGRESADO POR UN USUARIO //_____________________________________________________// 
+
+
+
+//_____________________________________________________// OBTENER TODAS LAS POSICIONES DE EN UN ARREGLO DE UN NÚMERO INGRESADO POR UN USUARIO //_____________________________________________________// 
+
+System.out.println("Ingrese un entero :");
+entero = Integer.valueOf(entrada.readLine());
+posicion_encontrada = obtener_pos_arreglo(matint[fila], entero); // 
+
+public static int obtener_pos_arreglo(int[] arr, int numero, int pos_siguiente) {
+    int pos = pos_siguiente;
+    while ((pos < MAXCOLUMNA) && (arr[pos] != numero)) {
+        pos++;
+    }
+    return pos;
+}
+
+//_____________________________________________________// OBTENER TODAS LAS POSICIONES DE EN UN ARREGLO DE UN NÚMERO INGRESADO POR UN USUARIO //_____________________________________________________// 
+
+
+/******************************************************************************************** FIN DE FUNCIONES ************************************************************************************/
+
+
+
+
+
+/******************************************************************************************** TRY ************************************************************************************/
+
+//_____________________________________________________// RECORRER MATRIZ BUSCANDO COINCIDENCIAS EN TODAS LAS POSICIONES //_____________________________________________________// 
+// Esto recorre la matriz por filas, va dentro del try ya que es para buscar  
+
+System.out.println("Ingrese un entero :");
+entero = Integer.valueOf(entrada.readLine());
+for (int fila = 0; fila < MAXFILA; fila++) {
+    posicion_encontrada = 0;
+    while (posicion_encontrada < MAXCOLUMNA-1){
+            posicion_encontrada = obtener_pos_arreglo(matint[fila], entero, posicion_encontrada);
+            corrimiento_izquierda(matint[fila], posicion_encontrada);
+        }
+}
+
+
+//_____________________________________________________// RECORRER MATRIZ BUSCANDO COINCIDENCIAS EN TODAS LAS POSICIONES //_____________________________________________________// 
+
+
+/**************************************************************************************** FIN DE TRY ************************************************************************************/
+
+
+
+
+
+
+
+/****************************************************************************************** MÉTODOS ************************************************************************************/
+
+//_____________________________________________________// ELIMINAR VARIAS OCURRENCIAS //_____________________________________________________//
+/* Previamente necesito obtener la posición ya sea por un número ingresado (tengo que buscar la posición de ese número) o por una posición ingresada */
+/* FUNCIÓN QUE TIENE QUE ESTAR SI O SI PARA QUE ESTO FUNCIONE: obtener_pos_arreglo (obtiene la posición en caso que sea un número lo que insertan) y corrimiento_izquierda 
+(el corrimiento es lo que realmente va a eliminar los números) */
+
+int posicion_encontrada = 0;
+
+for (int fila = 0; fila < MAXFILA; fila++) {
+    posicion_encontrada = 0;
+    while (posicion_encontrada < MAXCOLUMNA-1){
+            posicion_encontrada = obtener_pos_arreglo(matint[fila], entero, posicion_encontrada);
+            corrimiento_izquierda(matint[fila], posicion_encontrada);
+        }
+}
+    
+//_____________________________________________________// ELIMINAR VARIAS OCURRENCIAS //_____________________________________________________//
+
+
+
+
+//_____________________________________________________// CORRIMIENTO DE IZQUIERDA //_____________________________________________________//
+// posicion_a_correr es un numero que tiene que venir desde donde se llame al método
+
+public static void corrimiento_izquierda(int[] arr, int posicion_a_correr) {
+    int pos = posicion_a_correr;
+    for (int i = pos; i < MAXCOLUMNA - 1; i++) { // < MAX - 1 porque me estoy fijando en la pos arr[i+1]
+        arr[i] = arr[i + 1];
+    }  
+}
+
+//_____________________________________________________// CORRIMIENTO DE IZQUIERDA //_____________________________________________________//
+
+
+
+
+//_____________________________________________________// CORRIMIENTO DE DERECHA //_____________________________________________________//
+// posicion_a_correr es un numero que tiene que venir desde donde se llame al método
+
+public static void corrimiento_der_fila_columna(int [] arr, int posicion_a_correr){
+    int indice = MAXCOLUMNA-1;
+    while (indice > posicion_a_correr){
+        arr[indice] = arr[indice-1];
+        indice--;
+    }
+}
+
+//_____________________________________________________// CORRIMIENTO DE DERECHA //_____________________________________________________//
+
+/********************************************************************************* FIN DE MÉTODOS ************************************************************************************/
+
+
+
+
+
+/***************************************************************************** VARIAS ACCIONES JUNTAS ********************************************************************************/
+
+
+//_____________________________________________________// INSERTAR NÚMERO EN UNA FILA DE LA MATRIZ POR EL USUARIO //_____________________________________________________// 
+
+System.out.println("Ingrese un entero :");
+numero = Integer.valueOf(entrada.readLine());
+System.out.println("Ingrese un numero de fila :");
+fila = Integer.valueOf(entrada.readLine());
+
+if (fila>=0)&&(fila<MAXFILA){
+        	insertar_numero_arreglo(mat[fila], numero);
+}
+
+static void insertar_numero_arreglo(arr[], int numero){
+    pos=obtener_pos_arreglo(arr, numero);
+    if (pos<MAXCOLUMNA){
+        corrimiento_der_fila_columna(arr,pos);
+        arr[pos]=numero;
+    }
+}
+ 
+public static int obtener_pos_arreglo(int[] arr, int numero){
+    int pos = 0;
+    while ((pos<MAXCOLUMNA)&&(arr[pos]<numero)){
+        pos++;
+    }
+    return pos;
+}
+
+//_____________________________________________________// INSERTAR NÚMERO EN UNA FILA DE LA MATRIZ POR EL USUARIO //_____________________________________________________// 
+
+/***************************************************************************** VARIAS ACCIONES JUNTAS ********************************************************************************/

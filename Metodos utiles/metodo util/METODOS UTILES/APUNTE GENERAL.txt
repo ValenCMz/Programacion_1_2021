@@ -1,0 +1,115 @@
+/* Librerias para ingreso por teclado: */
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+
+/* Libreria para creacion de arreglo aleatorio */
+    import java.util.Random;
+
+/* Buffer de ingreso por teclado: */
+    BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in)); >>
+
+/* Impresion por pantalla */    
+    System.out.println("_______________________________");
+
+/* Manejo de excepciones */
+    try{
+
+    }
+    catch (Exception exc){
+        System.out.println(exc);
+        }
+
+/* Caracter minuscula */
+((caracter >= 'a') && (caracter <= 'z'))
+
+/* Caracter numero */
+((caracter >='0') && (caracter <='9'))
+
+/* Lectura de ingresos por teclado */
+numero = Integer.valueOf(entrada.readLine());
+caracter = entrada.readLine().charAt(0);
+
+/* Carga de arreglo int aleatorio */
+public static void cargar_arreglo_aleatorio_int(int [] arr){
+    Random r = new Random();
+    for (int pos = 0; pos < MAX; pos++){
+        arr[pos]=(r.nextInt(MAXVALOR-MINVALOR+1) + MINVALOR);
+    }
+}
+
+/* Carga de arreglo por teclado */
+public static void cargar_arreglo_int(int [] arr){
+    BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+    try{
+        for (int pos = 0; pos < MAX; pos++){
+            
+            System.out.println("Ingrese un entero: ");
+            
+            arr[pos] = Integer.valueOf(entrada.readLine());
+        }
+    }
+    catch(Exception exc){
+        System.out.println(exc);
+    }
+}
+
+/* Busqueda de posicion en arreglo */
+public static int buscar_pos_arreglo_ord_crec(int[] arr,int numero) {
+    int pos = 0;
+    while ((pos<MAX)&&(arr[pos]<numero)){
+        pos++;
+    }
+    return pos;
+}
+
+/* Corrimiento a derecha en arreglo */
+public static void corrimiento_der(int [] arrenteros, int pos){
+    int indice = MAX-1;
+    while (indice > pos){
+        arrenteros[indice] = arrenteros[indice-1];
+        indice--;
+    }
+}
+
+/* Corrimiento a izquierda en arreglo */
+public static void corrimiento_izq(int [] arrenteros, int pos) {
+    int pos = posicion;
+    while(pos < MAX-1) {
+        arrenteros[pos] = arrenteros[pos+1];
+        pos++;
+    }
+}
+
+/* Impresion de arreglo int */
+public static void imprimir_arreglo_int(int[]arr) {
+    for (int pos = 0; pos < MAX; pos++) {
+        System.out.println("arrenteros["+pos+"]=>: "+arr[pos]);
+    }
+}
+
+/* Constantes necesarias para carga e impresion de arreglos (valores a modificar)*/
+public static final int MAX = 10;
+public static final int MAXVALOR = 10;
+public static final int MINVALOR = 1;
+
+/* Ordenar arreglo por selección */
+public static void ordenar_arreglo_seleccion(int arr[]) {
+    int pos_menor, tmp;
+    for (int i = 0; i < MAX; i++) {
+        pos_menor = i;
+        for (int j = i + 1; j < MAX; j++) {
+            if (arr[j] < arr[pos_menor]) {
+                pos_menor = j;
+            }
+        }
+        if (pos_menor != i) {
+            tmp = arr[i];
+            arr[i] = arr[pos_menor];
+            arr[pos_menor] = tmp;
+        }
+    }
+}
+
+/* Arreglo precargado */
+int [] arreglo = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+int [] arreglo = {3, 5, 8, 1, 7, 4, 2, 7, 1, 2};

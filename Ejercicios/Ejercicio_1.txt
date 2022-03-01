@@ -1,0 +1,44 @@
+package Ejercicios;
+
+import java.util.Random;
+/*Hacer un programa que dado un arreglo de enteros de tamaño 10 que se encuentra
+precargado, invierta el orden del contenido (por ejemplo: el que está en 0 se intercambia con
+el que está en 9, el que está en 1 con el que está en 8...). Este intercambio no se debe realizar
+de manera explícita, hay que hacer un método que incluya una iteración de intercambio.*/
+
+
+public class Ejercicio_1 {
+	public static final int MAX =10;
+	public static final int MAXVALOR = 10;
+	public static final int MINVALOR = 1;
+	public static void main(String[] args) {
+		int [] a = {1,2,3,4,5,6,7,8,9,10};
+		imprimir_arreglo_int(a);
+		invetir_orden_de_arreglo(a);
+		//imprimir_arreglo_int(a);
+	}
+
+	public static void invetir_orden_de_arreglo (int []arr){	
+		int [] a = {1,2,3,4,5,6,7,8,9,10};
+		int aux;
+		for (int pos = 0; pos <= a.length/2; pos++) {
+			aux = a[pos];
+			a[pos]= a[9];
+			a[9]--;
+			System.out.println("la posicion nueva del arreglo es["+pos+"]= " + a[pos]);
+		}	
+	}
+	
+	/*public static void cargar_arreglo_aleatorio_int(int [] arr){
+		Random r = new Random();
+		for (int pos = 0; pos < MAX; pos++){
+			arr[pos]=(r.nextInt(MAXVALOR-MINVALOR+1) + MINVALOR);
+		}
+	}*/
+	
+	public static void imprimir_arreglo_int(int [] arr){
+		for (int pos = 0; pos < MAX; pos++){
+		System.out.println("nombre_arreglo["+pos+"]=>: "+arr[pos]);
+		}
+		}
+}

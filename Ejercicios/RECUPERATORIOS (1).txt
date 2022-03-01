@@ -1,0 +1,36 @@
+Se tiene una matriz de caracteres de tamanio 12*25 de secuencias de caracteres vocales minusculas (por cada fila) separadas por espacios. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores espacios. Se pide realizar un programa que:
+        _en cada secuencia inserte el principio de la misma el ultimo caracter vocal que tiene la secuencia, si cumple con la condicion de que la secuencia tiene todas las vocales o todas las consonantes. 
+        Suponer que cada fila de la matriz tiene espacio para agregar esos caracteres.
+        */
+
+ /*
+        Sea una matriz de enteros de tamanio 10*30 de secuencias de numeros pares entre 1 y 9 (por cada fila), separadas por ceros. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores 0. Se pide realizar un programa que:
+        _dado un numero ingresado por el usuario, reemplace de cada secuencia el mayor valor par que posee por lo que suma el contenido de la secuencia, si dicha suma es menor al numero ingresado y el promedio entero del contenido de la secuencia es menor al mayor valor que posee la secuencia. 
+        */
+
+Se tiene una matriz de enteros de tamanio 200*200 de secuencias de numeros impares distintos de 0, que estan separadas por 0. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores 0. Se pide realizar un programa que:
+        _para cada secuencia inserte al principio de la misma el valor correspondiente a la suma de los valores impares de la secuencia que son mayores a 100, si se cumple que dicha secuencia no esta ordenada de forma descendente.
+        Suponer que cada fila de la matriz tiene espacio para agregar esos valores.
+
+/*
+        Sea una matriz de caracteres de tamanio 12*30 de secuencias de caracteres digitos separadas por espacios. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores espacios. Se pide realizar un programa que:
+        _por cada fila, copie (si tiene) la secuencia central (central porque justo al medio del arreglo esta parte de esa secuencia) en un arreglo de caracteres de tamanio igual a la cantidad de elementos de la matriz (inicializado con espacios). 
+        A cada agregado en el arreglo se le debe agregar al final de la secuencia la vocal que mas se repite en la fila donde se encuentra la secuencia. El agregado en el arreglo se debe realizar de forma consecutiva de izquierda a derecha y sin separadores.
+        */
+
+/*
+        Se tiene una matriz de enteros de tamanio 25*40 de secuencias de numeros entre 1 y 9 (por cada fila), separadas por 0. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores 0. Se pide realizar un programa que:
+        _para todas las filas elimine las ultimas 3 secuencias sin orden descendente (o todas las que tenga si tiene menos de 3 secuencias sin orden descendente).
+        */
+
+  /*
+        Sea una matriz de enteros de tamanio 40*100 de secuencias de numeros entre 1 y 9 (por cada fila) de tamanio par, separadas por 0. 
+        La matriz esta precargada (no implementar el metodo de carga), y ademas cada fila empieza y termina con uno o mas separadores 0. Se pide realizar un programa que:
+        _para todas las filas inserte en la posicion central de cada secuencia el valor correspondiente al promedio entero de su contenido, siempre que se cumpla que la secuencia tenga una cantidad par de numeros pares o contenga el valor 6.
+        Suponer que cada fila de la matriz tiene espacio para agregar esos valores.
+        */
